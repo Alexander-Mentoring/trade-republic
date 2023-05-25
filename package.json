@@ -1,0 +1,31 @@
+{
+  "name": "trade-republic-challenge",
+  "private": true,
+  "version": "0.1.1",
+  "scripts": {
+    "dev": "concurrently \"node server.mjs\" \"vite\"",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "concurrently \"node server.mjs\" \"vite preview\"",
+    "test": "echo \n\nReplace this command with your own test runner.\n\n"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.5",
+    "concurrently": "^7.5.0",
+    "sass": "^1.55.0",
+    "typescript": "^4.8.4",
+    "vite": "^3.1.8",
+    "ws": "^8.10.0",
+    "@types/react": "^18.0.37",
+    "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "@vitejs/plugin-react": "^4.0.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4"
+  }
+}
