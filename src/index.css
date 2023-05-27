@@ -1,24 +1,30 @@
 @font-face {
   font-family: DIN Next TR Regular;
-  src: url(/fonts/DINNextLTPro-Regular.woff) format('woff'), url(/fonts/DINNextLTPro-Regular.woff2) format('woff2');
+  src: url(/fonts/DINNextLTPro-Regular.woff) format("woff"),
+    url(/fonts/DINNextLTPro-Regular.woff2) format("woff2");
 }
 
 @font-face {
   font-family: DIN Next TR Medium;
-  src: url(/fonts/DINNextLTPro-Medium.woff) format('woff'), url(/fonts/DINNextLTPro-Medium.woff2) format('woff2');
+  src: url(/fonts/DINNextLTPro-Medium.woff) format("woff"),
+    url(/fonts/DINNextLTPro-Medium.woff2) format("woff2");
 }
 
 @font-face {
   font-family: DIN Next TR Bold;
-  src: url(/fonts/DINNextLTPro-Bold.woff) format('woff'), url(/fonts/DINNextLTPro-Bold.woff2) format('woff2');
+  src: url(/fonts/DINNextLTPro-Bold.woff) format("woff"),
+    url(/fonts/DINNextLTPro-Bold.woff2) format("woff2");
 }
 
 :root {
-  --font-regular: DIN Next TR Regular, -apple-system, system-ui, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
-  --font-medium: DIN Next TR Medium, -apple-system, system-ui, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
-  --font-bold: DIN Next TR Bold, -apple-system, system-ui, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
-
-  --color-background1: black;
+  --font-regular: DIN Next TR Regular, -apple-system, system-ui,
+    BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  --font-medium: DIN Next TR Medium, -apple-system, system-ui,
+    BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+  --font-bold: DIN Next TR Bold, -apple-system, system-ui, BlinkMacSystemFont,
+    Helvetica, Arial, sans-serif;
+  /* Color */
+  --color-background1: #ecf1f7;
   --color-background2: rgba(248, 250, 253, 0.1);
   --color-background3: rgba(248, 250, 253, 0.2);
   --color-background4: rgba(248, 250, 253, 0.28);
@@ -61,7 +67,43 @@
   --color-secondary-orange2: rgba(255, 177, 24, 0.35);
   --color-secondary-orange3: rgba(255, 177, 24, 0.4);
 
+  --color-border: #9299a2;
+
   --max-width: 1200px;
+  /* Space */
+  --p-space-0: 0;
+  --p-space-025: 0.0625rem;
+  --p-space-05: 0.125rem;
+  --p-space-1: 0.25rem;
+  --p-space-2: 0.5rem;
+  --p-space-3: 0.75rem;
+  --p-space-4: 1rem;
+  --p-space-5: 1.25rem;
+  --p-space-6: 1.5rem;
+  --p-space-8: 2rem;
+  --p-space-10: 2.5rem;
+  --p-space-12: 3rem;
+  --p-space-16: 4rem;
+  --p-space-20: 5rem;
+  --p-space-24: 6rem;
+  --p-space-28: 7rem;
+  --p-space-32: 8rem;
+
+  /* Border */
+  --p-border-radius-05: 0.125rem;
+  --p-border-radius-1: 0.25rem;
+  --p-border-radius-2: 0.5rem;
+  --p-border-radius-3: 0.75rem;
+  --p-border-radius-4: 1rem;
+  --p-border-radius-5: 1.25rem;
+  --p-border-radius-6: 1.875rem;
+  --p-border-radius-full: 624.9375rem;
+
+  --p-border-width-1: 0.0625rem;
+  --p-border-width-2: 0.125rem;
+  --p-border-width-3: 0.1875rem;
+  --p-border-width-4: 0.25rem;
+  --p-border-width-5: 0.3125rem;
 }
 
 html {
