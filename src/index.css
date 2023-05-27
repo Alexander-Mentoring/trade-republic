@@ -69,6 +69,8 @@
 
   --color-border: #9299a2;
 
+  --color-text-subdued: rgba(97, 106, 117, 1);
+
   --max-width: 1200px;
   /* Space */
   --p-space-0: 0;

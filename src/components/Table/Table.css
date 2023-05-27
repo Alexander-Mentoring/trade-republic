@@ -1,0 +1,19 @@
+.th {
+  color: var(--color-text-subdued);
+  font: var(--font-regular);
+  text-align: right;
+  padding: var(--p-space-4);
+}
+
+.td {
+  font: var(--font-medium);
+  padding: var(--p-space-4);
+}
+
+.tr {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.table {
+  border-collapse: collapse;
+}
