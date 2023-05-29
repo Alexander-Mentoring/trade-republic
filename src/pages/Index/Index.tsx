@@ -10,10 +10,23 @@ import {
   ErrorBannerError,
   ErrorBanner,
 } from "../../components/ErrorBanner/ErrorBanner";
+import { ErrorsList } from "../../components/ErrorsList/ErrorsList";
+
+const validISINsList = [
+  "US88579Y1010	",
+  "US8318652091",
+  "US0028241000",
+  "US0036541003",
+  "IE00B4BNMY34",
+  "US00724F1012",
+  "US03073E1055",
+  "US03073E1055",
+  "US03073E1055",
+];
 
 export function IndexPage() {
   const [inputValue, setInputValue] = useState("");
-  const [userErros, setUserErrors] = useState<string[]>([]);
+  const [userErrors, setUserErrors] = useState<string[]>([]);
   const [subscribedISINS, setSubscribedISINS] = useState(new Set<string>());
   const [networkError, setNetworkError] = useState<ErrorBannerError>();
   const { sendJsonMessage, lastJsonMessage } = useWebSocket<{
@@ -25,7 +38,7 @@ export function IndexPage() {
       setNetworkError({
         message: "Can not reconnect, try to reload page",
         title: "Network error",
-        type: "warning",
+        type: "error",
       });
     },
     reconnectAttempts: 5,
@@ -105,6 +118,7 @@ export function IndexPage() {
         return;
       }
 
+      setUserErrors([]);
       setSubscribedISINS((prev) => new Set(prev).add(inputValue));
       setInputValue("");
     });
@@ -113,6 +127,14 @@ export function IndexPage() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
     setUserErrors([]);
+  };
+
+  const handleAddValidISIN = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    const index = Math.round(Math.random() * (validISINsList.length - 1));
+    setInputValue(validISINsList[index]);
   };
 
   return (
@@ -126,9 +148,6 @@ export function IndexPage() {
       )}
 
       <div className="index__layout">
-        {userErros.map((error) => (
-          <div>{error}</div>
-        ))}
         <form className="index__form" onSubmit={handleSubmitISIN}>
           <div className="index__input">
             <SearchInput
@@ -142,7 +161,11 @@ export function IndexPage() {
           <div className="index__button">
             <Button type="submit">Add</Button>
           </div>
+          <div className="index__button">
+            <Button onClick={handleAddValidISIN}>Add Valid ISIN</Button>
+          </div>
         </form>
+        {userErrors.length !== 0 && <ErrorsList errors={userErrors} />}
         <div className="index__table">
           <h2 className="index__table-label">Subscribed ISINS</h2>
           <Table headings={["Name", "Price"]} rows={rows} />

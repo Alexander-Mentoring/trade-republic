@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { ErrorBanner } from "./ErrorBanner";
 
 const meta: Meta<typeof ErrorBanner> = {
-  title: "UI/Button",
+  title: "UI/ErrorBanner",
   component: ErrorBanner,
 };
 

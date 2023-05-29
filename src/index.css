@@ -71,6 +71,9 @@
 
   --color-text-primary: black;
   --color-text-subdued: rgba(97, 106, 117, 1);
+  --color-text-alert-warning: rgb(102, 60, 0);
+  --color-text-alert-error: rgb(95, 33, 32);
+  --color-text-validation-error: #d32f2f;
 
   --max-width: 1200px;
   /* Space */
