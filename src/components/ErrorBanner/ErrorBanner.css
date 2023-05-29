@@ -1,0 +1,5 @@
+.errorBanner--warning {
+  background-color: var(--color-primary-orange1);
+  color: var(--color-text-primary);
+  width: 100%;
+}
