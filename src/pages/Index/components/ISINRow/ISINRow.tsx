@@ -10,7 +10,7 @@ type Props = {
   onUnsubscribe?: (isin: string) => void;
 };
 
-export function ISINRow({
+function ISINRow({
   subscribe,
   isin,
   unsubscribe,
