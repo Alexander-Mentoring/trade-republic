@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from "react";
 import { Td, Tr } from "../../../../components/Table/Table";
 import { Button } from "../../../../components/Button/Button/Button";
-
+import transtaltions from "./translations/en.json";
 type Props = {
   isin: string;
   subscribe: (isin: string) => void;
@@ -38,7 +38,9 @@ export function ISINRow({
       <Td>{price?.toFixed(6)}</Td>
       {onUnsubscribe && (
         <Td>
-          <Button onClick={() => onUnsubscribe(isin)}>Unsubscribe</Button>
+          <Button onClick={() => onUnsubscribe(isin)}>
+            {transtaltions.unsubscribeButton}
+          </Button>
         </Td>
       )}
     </Tr>

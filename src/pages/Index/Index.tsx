@@ -51,11 +51,17 @@ export function IndexPage() {
       return true;
     },
     reconnectInterval: (number) => {
-      return Math.E * number * 100;
+      /*
+        In order to avoid spamming the backend, 
+        we gradually increase the interval between each subsequent request using an exponential function.
+      */
+      return Math.exp(number) * 100;
     },
     onOpen: () => {
       setNetworkError(undefined);
       if (subscribedISINS.size !== 0) {
+        // When reconnecting, it is important to note that the backend does not save subscribed ISINs.
+        // Therefore, we must resubscribe to our ISINs.
         subscribedISINS.forEach((isin) => {
           sendJsonMessage({
             subscribe: isin,
