@@ -1,9 +1,11 @@
-import './Button.css'
+import "./Button.css";
 
-export function Button() {
-    return   <button className="button">
-    <span className="button-content">
-      Click
-    </span>
-  </button>
+type Props = React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+export function Button({ children, ...props }: Props) {
+  return (
+    <button {...props} className="button">
+      <span className="button-content">{children}</span>
+    </button>
+  );
 }

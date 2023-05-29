@@ -1,13 +1,14 @@
 .th {
   color: var(--color-text-subdued);
   font: var(--font-regular);
-  text-align: right;
+  text-align: center;
   padding: var(--p-space-4);
 }
 
 .td {
   font: var(--font-medium);
   padding: var(--p-space-4);
+  text-align: center;
 }
 
 .tr {
@@ -16,4 +17,5 @@
 
 .table {
   border-collapse: collapse;
+  width: 100%;
 }

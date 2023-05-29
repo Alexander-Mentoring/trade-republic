@@ -1,0 +1,27 @@
+.index__layout {
+  width: var(--max-width);
+  margin: var(--p-space-32) auto;
+}
+
+.index__input {
+  width: calc(100% - 200px - 16px);
+}
+
+.index__button {
+  height: 38px;
+  width: 200px;
+  margin-left: 16px;
+}
+
+.index__form {
+  display: flex;
+  align-items: center;
+}
+
+.index__table {
+  margin-top: var(--p-space-28);
+}
+
+.index__table-label {
+  margin-bottom: var(--p-space-16);
+}

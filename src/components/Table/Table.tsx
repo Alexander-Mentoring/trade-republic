@@ -2,7 +2,7 @@ import "./Table.css";
 
 type Props = {
   headings: string[];
-  rows: React.ReactNode[][];
+  rows: React.ReactNode[];
 };
 
 export function Table(props: Props) {
@@ -11,21 +11,21 @@ export function Table(props: Props) {
       <thead>
         <tr>
           {props.headings.map((head) => (
-            <th className="th">{head}</th>
+            <th key={head} className="th">
+              {head}
+            </th>
           ))}
         </tr>
       </thead>
-      <tbody>
-        {props.rows.map((tr) => {
-          return (
-            <tr className="tr">
-              {tr.map((td) => (
-                <td className="td">{td}</td>
-              ))}
-            </tr>
-          );
-        })}
-      </tbody>
+      <tbody>{props.rows}</tbody>
     </table>
   );
+}
+
+export function Tr({ children }: { children: React.ReactNode }) {
+  return <tr className="tr">{children}</tr>;
+}
+
+export function Td({ children }: { children: React.ReactNode }) {
+  return <td className="td">{children}</td>;
 }
