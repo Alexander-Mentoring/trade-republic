@@ -19,4 +19,12 @@ module.exports = {
   rules: {
     "react-refresh/only-export-components": "warn",
   },
+  overrides: [
+    {
+      files: ["**/*.test.ts", "**/*.test.tsx"],
+      rules: {
+        "@typescript-eslint/no-non-null-assertion": "off",
+      },
+    },
+  ],
 };

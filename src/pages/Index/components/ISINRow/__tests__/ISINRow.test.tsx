@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { act, render } from "@testing-library/react";
 import { ISINRow } from "..";
 describe("ISINRow", () => {
   it("calls subscribe onMoun", () => {
@@ -119,5 +119,34 @@ describe("ISINRow", () => {
 
     expect(await result.findByText("US00724F1012")).toBeInTheDocument();
     expect(await result.findByText("333.432135")).toBeInTheDocument();
+  });
+
+  it("calls onUnsubscribe when clicked unsubscribe button", () => {
+    const onUnsubscribe = jest.fn();
+    const result = render(
+      <ISINRow
+        isin="US00724F1012"
+        subscribe={jest.fn()}
+        unsubscribe={jest.fn}
+        onUnsubscribe={onUnsubscribe}
+        lastState={{
+          isin: "US00724F1012",
+          price: 333.432135,
+        }}
+      />
+    );
+
+    result.debug();
+
+    const buttons = Array.from(result.container.querySelectorAll("button"));
+    const unsubscribeButton = buttons.find(
+      (button) => button.textContent === "Unsubscribe"
+    )!;
+
+    act(() => {
+      unsubscribeButton.click();
+    });
+
+    expect(onUnsubscribe).toHaveBeenCalledWith("US00724F1012");
   });
 });
