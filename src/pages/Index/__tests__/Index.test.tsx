@@ -45,6 +45,33 @@ describe("Index Page", () => {
     expect(desireRow).toBeInTheDocument();
   });
 
+  it("removes ISIS", () => {
+    const result = render(<IndexPage />);
+
+    const input = result.getByPlaceholderText("Enter ISIN");
+
+    act(() => {
+      fireEvent.change(input, { target: { value: "US88579Y1010" } });
+
+      fireEvent.click(result.getByText("Add"));
+    });
+
+    const getRowWithISIN = (isin: string) => {
+      const trs = Array.from(result.container.querySelectorAll("tr"));
+      return trs.find((tr) => tr.textContent?.includes(isin));
+    };
+
+    const rawBeforeDeletion = getRowWithISIN("US88579Y1010");
+
+    expect(rawBeforeDeletion).toBeInTheDocument();
+
+    act(() => {
+      fireEvent.click(result.getByText("Unsubscribe"));
+    });
+
+    expect(rawBeforeDeletion).not.toBeInTheDocument();
+  });
+
   describe("ISIN validation", () => {
     it("shows error when lenght of ISIN less then 12", async () => {
       const result = render(<IndexPage />);
@@ -79,7 +106,6 @@ describe("Index Page", () => {
         fireEvent.click(result.getByText("Add"));
       });
 
-      result.debug();
       expect(
         await result.findByText("You already subscribed on this ISIN")
       ).toBeInTheDocument();

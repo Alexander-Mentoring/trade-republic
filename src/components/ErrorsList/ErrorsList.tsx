@@ -7,7 +7,7 @@ export function ErrorsList({ errors }: Props) {
   return (
     <ul className="errorsList">
       {errors.map((error) => (
-        <li>{error}</li>
+        <li key={error}>{error}</li>
       ))}
     </ul>
   );
