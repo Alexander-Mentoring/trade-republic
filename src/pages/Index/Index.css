@@ -10,7 +10,7 @@
 .index__button {
   height: 38px;
   width: 200px;
-  margin-left: 16px;
+  margin-left: var(--p-space-4);
 }
 
 .index__form {

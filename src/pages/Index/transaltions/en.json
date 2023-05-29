@@ -1,0 +1,22 @@
+{
+  "networkErrors": {
+    "canNotReconnect": {
+      "message": "Can not reconnect, try to reload page"
+    },
+    "lostConnection": {
+      "message": "Lost connection with server. Data might be outdated, we try to reconnect"
+    }
+  },
+  "validationErrors": {
+    "alreadySubscribedISIN": "You already subscribed on this ISIN"
+  },
+  "table": {
+    "headings": {
+      "price": "Price",
+      "name": "Name"
+    }
+  },
+  "searchInput": {
+    "placeholder": "Enter ISIN"
+  }
+}

@@ -45,6 +45,8 @@ export function ISINRow({
   );
 }
 
+// I optimize this component by memoizing it to preserve re-rendering on every message from sockets.
+// We refresh it only if the message contains the same "isin" as our raw.
 export const MemoISINRow = memo(ISINRow, (prevProps, newProps) => {
   if (Object.is(prevProps, newProps)) {
     return true;

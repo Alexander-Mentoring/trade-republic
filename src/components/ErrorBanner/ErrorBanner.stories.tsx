@@ -12,23 +12,11 @@ const meta: Meta<typeof ErrorBanner> = {
 type Story = StoryObj<typeof ErrorBanner>;
 
 export const Warning: Story = {
-  render: () => (
-    <ErrorBanner
-      message="Connection lost"
-      title="Network problem"
-      type="warning"
-    />
-  ),
+  render: () => <ErrorBanner message="Connection lost" type="warning" />,
 };
 
 export const Error: Story = {
-  render: () => (
-    <ErrorBanner
-      message="Connection lost"
-      title="Network problem"
-      type="error"
-    />
-  ),
+  render: () => <ErrorBanner message="Connection lost" type="error" />,
 };
 
 export default meta;

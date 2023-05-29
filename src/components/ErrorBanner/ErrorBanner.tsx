@@ -4,7 +4,6 @@ import "./ErrorBanner.css";
 type ErrorType = "warning" | "error";
 
 export type ErrorBannerError = {
-  title: string;
   message: string;
   type: ErrorType;
 };

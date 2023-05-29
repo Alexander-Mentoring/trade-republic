@@ -11,6 +11,7 @@ import {
   ErrorBanner,
 } from "../../components/ErrorBanner/ErrorBanner";
 import { ErrorsList } from "../../components/ErrorsList/ErrorsList";
+import translations from "./transaltions/en.json";
 
 const validISINsList = [
   "US88579Y1010	",
@@ -36,17 +37,14 @@ export function IndexPage() {
     retryOnError: true,
     onReconnectStop: () => {
       setNetworkError({
-        message: "Can not reconnect, try to reload page",
-        title: "Network error",
+        message: translations.networkErrors.canNotReconnect.message,
         type: "error",
       });
     },
     reconnectAttempts: 5,
     shouldReconnect: () => {
       setNetworkError({
-        message:
-          "Lost connection with server. Data might be outdated, we try to reconnect",
-        title: "Network error",
+        message: translations.networkErrors.lostConnection.message,
         type: "warning",
       });
 
@@ -109,7 +107,7 @@ export function IndexPage() {
   const handleSubmitISIN = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (subscribedISINS.has(inputValue)) {
-      setUserErrors(["You already subscribed on this ISIN"]);
+      setUserErrors([translations.validationErrors.alreadySubscribedISIN]);
       return;
     }
     isValidISIN(inputValue, (err) => {
@@ -140,11 +138,7 @@ export function IndexPage() {
   return (
     <>
       {networkError && (
-        <ErrorBanner
-          message={networkError.message}
-          title={networkError.title}
-          type={networkError.type}
-        />
+        <ErrorBanner message={networkError.message} type={networkError.type} />
       )}
 
       <div className="index__layout">
@@ -153,7 +147,7 @@ export function IndexPage() {
             <SearchInput
               name="isin"
               type="text"
-              placeholder="Enter ISIN"
+              placeholder={translations.searchInput.placeholder}
               onChange={handleChange}
               value={inputValue}
             />
@@ -168,7 +162,13 @@ export function IndexPage() {
         {userErrors.length !== 0 && <ErrorsList errors={userErrors} />}
         <div className="index__table">
           <h2 className="index__table-label">Subscribed ISINS</h2>
-          <Table headings={["Name", "Price"]} rows={rows} />
+          <Table
+            headings={[
+              translations.table.headings.name,
+              translations.table.headings.price,
+            ]}
+            rows={rows}
+          />
         </div>
       </div>
     </>
