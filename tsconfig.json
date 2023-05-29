@@ -9,12 +9,10 @@
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
 
-    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
 
     "strict": true,
     "noUnusedLocals": true,
