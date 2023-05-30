@@ -1,200 +1,94 @@
-# Frontend Coding Challenge
+## Demo
 
-Hello there, thanks again for your interest in Trade Republic. To kick off the
-interview process we have prepared a short coding exercise for you, to demonstrate your knowledge of the language and tools we use to develop our web applications.
+<video src="./documentation/demo.mp4"></video>
 
-**Please note: The coding test should show that you feel comfortable working with any JavaScript framework. We use Vue.js and prefer it but you can use another framework if you feel that it will better show off your skills. The assessment of your submission will not change if you use a different framework.**
+## How to run
 
-In case you have any questions, feel free to reach out to your dedicated recruiter.
+`yarn install` - to install dependencies
 
-## Content
+`yarn dev` - to start project in dev mode
 
-- [Intro & Context](#context)
-- [The Application](#the-application)
-- [Using this application](#using-this-application)
-- [The Challenge](#task-description)
-  - [Task 1](#task-1)
-  - [Task 2](#task-2)
-  - [Task 3](#task-3)
-- [Socket Reference](#socket-reference)
-- [Challenge Questions](#questions)
-- [Submit your solution](#how-to-submit-your-solution)
+`yarn storybook` - to open UI components library
 
-## Context
+`yarn test` - to run unit tests
 
-Developing our app, we work with a REST API as well as real-time streaming market
-data to display the latest stock prices with millisecond latency. You should feel
-comfortable developing an app to address these two types of network interaction. The WebSocket server you’ll be using accepts and emits messages in JSON format.
+## File structure
 
-## Things we care for:
+/src/components/ - folder with shared components
 
-✅ Unit tests
+`<NameOfComponent>.tsx` - component file
 
-✅ Semantic HTML
+`<NameOfComponent>.stories.tsx` - storybook file
 
-✅ Responsive Design
+`<NameOfComponent>.css` - styles file
 
-✅ Documentation
+/pages - folders with pages sepcific components
 
-✅ Accessibility
+`<NameOfPage>.tsx` - file of page
 
-## Nice to have:
+`<NameOfPage>.css` - file of page styles
 
-🤩 Use of Reactive programming libraries like RxJS.
+`<NameOfPage>/components` - page specific components
 
-### Glossary
+`<NameOfPage>/translations` - page translations
 
-We don’t expect you to be a trading expert and some of the terms are quite specific to the space. Here’s some of the terms we use in the task:
-| Term | Definition |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `ISIN` | The 12-digit alphanumeric code that uniquely identifies a specific instrument |
-| `instrument` | A tradable asset, or a negotiable item, such as a security, commodity, derivative, or index, or any item that underlies a derivative. |
-| `bid` | The highest price a buyer will pay to buy a specified number of shares of an instrument at any given time. |
-| `ask` | The lowest price at which a seller will sell the instrument. |
+`<NameOfPage>/__tests__` - page tests
 
----
+## Used libraries
 
-## The Application
+### Runtime dependencies
 
-In the interest of saving you some time, we provided a working [Vue](https://vuejs.org) application. This application also includes a small set of components for you to use. Please note, using these components is optional, you are welcome to change them in any way you want, you should only submit something you are comfortable with.
+`React` - framework that i most familiar with and will spend less time to solve task
 
-## Using this application
+`react-use-websocket` - library which handles work with websockets. Desided to use it, because it already handles reconnection cases from the box. But not sure that i would like to use it in production. Maintianer not answers in issue. Possibly would like to find something better.
 
-### Pre-requisites
+`state-manager` - did not find any complex logic in this project, then have been using just react useState
 
-Please make sure to have [Node](https://nodejs.org) 16 installed.
+### Dev dependencies
 
-### Running the code
+`storybook` - provides good documentation for UI components and in the future can be usefull for UI testing
 
-Once you have unzipped the folder and are ready to start, you can run `yarn` (or `npm install`) to install dependencies. After that, you can run:
+`jest` - test runner. Have choosed it beacause have a lot experiance with this library and it worked well for me
 
-```bash
-# npm
-npm run dev
+`react-testing-library` - library which helps test react components. Provides good testing patterns. Works well for me
 
-# or yarn
-yarn dev
-```
+`eslint/prettier` - to make consistent code
 
-This will start the application in development mode. It will also start the WebSocket server on port 8425. 
+## Answers on questions
 
-You can see the client application running in your browser by going to http://localhost:3000.
+> 1. What happens in case the WebSocket disconnects? How would you go further to keep
+>    the live data available or inform the user? Please discuss the challenges.
 
----
+In case of disconnection we have different options to handle it:
 
-## Task Description
+1. Try to reconnect
+2. Inform user about issues with the servier
+3. Store data in offline storage and then sync it
 
-In this repository we have provided you with a minimal [Vue.js](https://vuejs.org) + [Vite](https://vitejs.dev) application. Your task is to extend this app so that it allows a user to subscribe/unsubscribe to a list of stocks. The user should be able to subscribe to a stock by entering its [ISIN](https://www.investopedia.com/terms/i/isin.asp) number into an input and then see the current price of the stock displayed in a list view.
+We can use one of this technics or use them all together. It depence on the case that we would like handle and the data which we would like to store.
 
-What we would like to see is clean, readable code that you would be **comfortable submitting to your colleagues for review**. Please explain decisions that you’ve made and what you would do if you had more time to continue development. You can add them to this `README.md` file.
+Possible challanges:
 
-Requirements:
+1. Incostistend state between frontend and backend
+2. With reconnection we can ddoss our server. It is important increase timeout between reconnection requests
 
-- We want to see how you interpret [user stories](#user-stories) into a solution, please fulfill all of the stories provided.
-- Please avoid using a UI library, we want to be able to see your styling skills.
-- We recommend using Vue but you can use a different framework if you feel that you’ll be able to demonstrate your skills better.
-- Great user experience is important to us at Trade Republic. Please approach the challenge from a user’s perspective and build something you would be happy to put into user’s hands.
-- Please also provide setup instructions and answer the following [questions](#questions) in your README.
+> 2. What happens if a user adds an instrument multiple times to their list? Please discuss possible challenges and mitigations.
 
-## Tasks
+1. We will have a lot of DOM nodes which will updates in the same time. Then we will have performance issues.
+2. It may confuse user
 
-### Task 1
+> 3. What potential performance issues might you face when this app scales with multiple subscriptions? How would you improve the speed and user experience?
 
-Create a form that allows a user to submit an ISIN and add it to a watch list.
+1. With a large number of subscriptions, the network bandwidth usage can increase significantly. Network congestion can result in slower data transmission, delayed updates, and potential packet loss, negatively affecting the user experience.
 
-#### User Stories
+How to fix:
 
-> As a user, I should be able to submit an ISIN and it should be added to my watch list.
+    1. Compress data
+    2. Minimize the size of the transmitted data by sending only necessary information. Avoid sending redundant or unnecessary data fields to reduce bandwidth consumption.
 
-> As a user, I should not be able to subscribe to the same ISIN twice so that I don’t get confused by seeing multiple versions of the same stock.
+2. Rendering and updating a large number of live data can impact performance and responsiveness, especially on devices with limited processing power.
 
-> As a user, I should not be able to subscribe to an empty or invalid ISIN.
+How to fix:
 
-> Validation rules: An ISIN is a 12-character alphanumeric code. It consists of three parts: A two letter country code, a nine character alpha-numeric national security identifier, and a single check digit.
-> Example:- US0378331005.
-
-### Task 2
-
-Create the UI and render the watch list created in the previous task to the DOM.
-
-#### User Stories
-
-> As a user, I should be able to view a list of my subscribed stocks displaying the latest stock price received from the WebSocket connection so that I can keep track of multiple stocks at the same time.
-
-> As a user, I should be able to unsubscribe from a stock that’s in my watch list so that I can focus on the stocks I’m interested in.
-
-> As a user, I should be notified if the websocket disconnects and the data is not up to date so that I know that the price is not accurate.
-
-> As a user, I should be able to view their stocks on desktop and mobile screen widths so that I am able to use the app on my mobile browser.
-
-### Task 3
-
-At this point, you can consider the challenge to be complete.
-
-This task is intentionally left open for you to add any feature you want to the application. Anything is valid, from improvements to Accessibility all the way to UI Transitions, CSS, etc.
-
----
-
-## Socket Reference
-
-The WebSocket server is started when you run `yarn dev`. You can then connect to it at
-
-```URL
-ws://localhost:8425/
-```
-
-To subcribe to a specific security
-
-```JSON
-{
-    "subscribe": "${ISIN}"
-}
-```
-
-To unsubscribe to a specific security
-
-```JSON
-{
-    "unsubscribe": "${ISIN}"
-}
-```
-
-#### Example Request
-
-To subscribe to the BASF instrument you would use
-
-```JSON
-{
-    "subscribe": "DE000BASF111"
-}
-```
-
-#### Sample Response
-
-You would then receive a WebSocket stream with messages in the following format
-
-```JSON
-{
-    "isin": "DE000BASF111",
-    "price": 11.316359370403822,
-    "bid": 11.306359370403822,
-    "ask": 11.326359370403821
-}
-```
-
----
-
-## Questions
-
-1. What happens in case the WebSocket disconnects? How would you go further to keep
-   the live data available or inform the user? Please discuss the challenges.
-
-2. What happens if a user adds an instrument multiple times to their list? Please discuss possible challenges and mitigations.
-
-3. What potential performance issues might you face when this app scales with multiple subscriptions? How would you improve the speed and user experience?
-
----
-
-## How to submit your solution
-
-Please zip your project and submit zip archive via the Greenhouse link attached to the email with the code challenge. Your dedicated recruiter will receive the notification about your submission and will send it for the team review.
+    1. Use virtual scrolls
+    2. Pagination
