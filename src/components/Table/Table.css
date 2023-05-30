@@ -19,3 +19,10 @@
   border-collapse: collapse;
   width: 100%;
 }
+
+@media all and (max-width: 400px) {
+  .td {
+    padding: var(--p-space-1);
+    font: var(--font-regular);
+  }
+}

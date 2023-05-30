@@ -1,5 +1,5 @@
 .index__layout {
-  width: var(--max-width);
+  max-width: var(--max-width);
   margin: var(--p-space-32) auto;
 }
 
@@ -24,4 +24,41 @@
 
 .index__table-label {
   margin-bottom: var(--p-space-16);
+}
+
+@media all and (max-width: 1200px) {
+  .index__layout {
+    margin: var(--p-space-8);
+  }
+}
+
+@media all and (max-width: 800px) {
+  .index__form {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .index__input {
+    width: 100%;
+    margin-bottom: var(--p-space-8);
+  }
+
+  .index__button {
+    margin-left: 0;
+    width: 44%;
+  }
+
+  .index__table-label {
+    margin-bottom: var(--p-space-4);
+  }
+
+  .index__table {
+    margin-top: var(--p-space-12);
+  }
+}
+
+@media all and (max-width: 500px) {
+  .index__layout {
+    margin: var(--p-space-16) var(--p-space-4) var(--p-space-4) var(--p-space-4);
+  }
 }
