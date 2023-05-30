@@ -1,6 +1,8 @@
 ## Demo
 
-<video src="./documentation/demo.mp4"></video>
+
+https://github.com/n-filatov/trade-republic/assets/11233957/202ec1b2-1f62-411c-9e81-f9ea01b99142
+
 
 ## How to run
 
