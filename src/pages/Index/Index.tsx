@@ -2,7 +2,7 @@ import { useCallback, useMemo, useState } from "react";
 import { SearchInput } from "../../components/SearchInput/SearchInput";
 import { Table } from "../../components/Table/Table";
 import { ISINRow } from "./components/ISINRow";
-import { Button } from "../../components/Button/Button/Button";
+import { Button } from "../../components/Button/Button";
 import useWebSocket from "react-use-websocket";
 import isValidISIN from "isin-validator";
 import "./Index.css";

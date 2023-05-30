@@ -1,6 +1,6 @@
 import { memo, useEffect, useState } from "react";
 import { Td, Tr } from "../../../../components/Table/Table";
-import { Button } from "../../../../components/Button/Button/Button";
+import { Button } from "../../../../components/Button/Button";
 import transtaltions from "./translations/en.json";
 type Props = {
   isin: string;
