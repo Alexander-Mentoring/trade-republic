@@ -14,4 +14,4 @@ For components will use storybook
 
 2. Plan
 
-I do not have any design in this task. Will make some fast design in figma to have reference:
+I do not have any design in this task. Will make some fast design in figma to have reference: test
